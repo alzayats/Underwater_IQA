@@ -1,0 +1,92 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# PyTorch
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project specific
+LAR_IQA/log/
+LAR_IQA/pretrained/
+LAR_IQA/Dataset/
+Underwater_IQA/outputs/
+Underwater_IQA/examples/*.jpg
+Underwater_IQA/examples/*.png
+*.csv
+*.log
+
+# Weights & Biases
+wandb/
+
+# Large files
+*.zip
+*.tar.gz
+*.rar
+
+# Temporary files
+*.tmp
+*.temp
+temp.txt
+The_paper_LaTeX/*.aux
+The_paper_LaTeX/*.bbl
+The_paper_LaTeX/*.blg
+The_paper_LaTeX/*.log
+The_paper_LaTeX/*.out
+The_paper_LaTeX/*.pdf
+The_paper_LaTeX/*.synctex.gz
+
+# Data files
+*.h5
+*.hdf5
+*.npy
+*.npz
+
+# System files
+Thumbs.db
+.DS_Store
+/NOT_good_paper/
+/output_vis/
+/Underwater_IQA/The_paper_LaTeX/
+/The_paper_LaTeX/

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery - Underwater_IQA</title>
+    <meta name="description" content="Example gallery showcasing underwater image quality assessments." />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <nav>
+        <a href="index.html" class="logo">🌊 Underwater_IQA</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="methodology.html">Methodology</a></li>
+          <li>
+            <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank">Live Demo</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero" style="padding: 3rem 2rem">
+        <h1>Example Gallery</h1>
+        <p>Sample underwater image assessments and quality reports</p>
+      </section>
+
+      <!-- Gallery Introduction -->
+      <div class="container">
+        <section>
+          <h2>Assessment Examples</h2>
+          <p>
+            Below are examples of underwater images assessed with Underwater_IQA. Click on any image to view a larger
+            version. Each example includes quality metrics and assessment details.
+          </p>
+          <p>
+            These images demonstrate the system's ability to identify the blue water problem, assess feature usefulness
+            for computer vision, and evaluate marine science research value.
+          </p>
+        </section>
+      </div>
+
+      <!-- High Quality Examples -->
+      <div class="container">
+        <section>
+          <h2>High Quality Examples</h2>
+          <p>Images with good clarity, color saturation, and detail preservation</p>
+
+          <div class="gallery" id="high-quality-gallery">
+            <div class="gallery-item">
+              <img src="images/examples/18_img_good.png" alt="High quality underwater image" />
+              <div class="gallery-caption">
+                <strong>Good Quality Image</strong><br />
+                Overall: 82/100 | Feature Usefulness: 85/100 | Blue Water: 3/10
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f9f9f9; border-radius: 8px">
+            <h3>Assessment Details</h3>
+            <table>
+              <tr>
+                <th>Metric</th>
+                <th>Score</th>
+                <th>Interpretation</th>
+              </tr>
+              <tr>
+                <td><strong>Overall Quality</strong></td>
+                <td>82/100</td>
+                <td>Excellent - High quality underwater image</td>
+              </tr>
+              <tr>
+                <td><strong>Blue Water Severity</strong></td>
+                <td>3/10</td>
+                <td>Minimal - Minimal blue-green color cast</td>
+              </tr>
+              <tr>
+                <td><strong>Feature Usefulness</strong></td>
+                <td>85/100</td>
+                <td>Excellent - Suitable for computer vision tasks</td>
+              </tr>
+              <tr>
+                <td><strong>Marine Science Value</strong></td>
+                <td>80/100</td>
+                <td>Excellent - Good for research and species ID</td>
+              </tr>
+              <tr>
+                <td><strong>Sharpness</strong></td>
+                <td>8.5/10</td>
+                <td>Very sharp - Good edge definition</td>
+              </tr>
+              <tr>
+                <td><strong>Contrast</strong></td>
+                <td>8.2/10</td>
+                <td>Good contrast - Objects clearly distinguishable</td>
+              </tr>
+              <tr>
+                <td><strong>Color Saturation</strong></td>
+                <td>7.8/10</td>
+                <td>Good saturation - Colors well preserved</td>
+              </tr>
+            </table>
+
+            <h3>Strengths</h3>
+            <ul>
+              <li>✓ Clear visibility of underwater features</li>
+              <li>✓ Minimal blue-green color cast</li>
+              <li>✓ Good contrast between objects and background</li>
+              <li>✓ Detailed edges and fine structures visible</li>
+              <li>✓ Suitable for feature extraction and object detection</li>
+            </ul>
+
+            <h3>Recommendations</h3>
+            <p>This image is of high quality and requires minimal enhancement. It is suitable for:</p>
+            <ul>
+              <li>Direct use in computer vision pipelines</li>
+              <li>Marine science research and analysis</li>
+              <li>Training data for deep learning models</li>
+              <li>Documentation and archival purposes</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- Poor Quality Examples -->
+      <div class="container">
+        <section>
+          <h2>Poor Quality Examples</h2>
+          <p>Images affected by blue water problem, low contrast, and reduced visibility</p>
+
+          <div class="gallery" id="poor-quality-gallery">
+            <div class="gallery-item">
+              <img src="images/examples/18_img_poor.png" alt="Poor quality underwater image" />
+              <div class="gallery-caption">
+                <strong>Poor Quality Image</strong><br />
+                Overall: 38/100 | Feature Usefulness: 35/100 | Blue Water: 8.5/10
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f9f9f9; border-radius: 8px">
+            <h3>Assessment Details</h3>
+            <table>
+              <tr>
+                <th>Metric</th>
+                <th>Score</th>
+                <th>Interpretation</th>
+              </tr>
+              <tr>
+                <td><strong>Overall Quality</strong></td>
+                <td>38/100</td>
+                <td>Poor - Significant quality issues</td>
+              </tr>
+              <tr>
+                <td><strong>Blue Water Severity</strong></td>
+                <td>8.5/10</td>
+                <td>Severe - Strong blue-green color cast present</td>
+              </tr>
+              <tr>
+                <td><strong>Feature Usefulness</strong></td>
+                <td>35/100</td>
+                <td>Poor - Limited usefulness for computer vision</td>
+              </tr>
+              <tr>
+                <td><strong>Marine Science Value</strong></td>
+                <td>42/100</td>
+                <td>Fair - Limited research value due to low clarity</td>
+              </tr>
+              <tr>
+                <td><strong>Sharpness</strong></td>
+                <td>4.2/10</td>
+                <td>Blurry - Significant blur and loss of detail</td>
+              </tr>
+              <tr>
+                <td><strong>Contrast</strong></td>
+                <td>3.8/10</td>
+                <td>Very low - Poor object-background separation</td>
+              </tr>
+              <tr>
+                <td><strong>Color Saturation</strong></td>
+                <td>2.5/10</td>
+                <td>Desaturated - Strong blue color cast dominates</td>
+              </tr>
+            </table>
+
+            <h3>Identified Issues</h3>
+            <ul>
+              <li>✗ Severe blue-green color cast</li>
+              <li>✗ Very low contrast - objects barely visible</li>
+              <li>✗ Significant blur and loss of detail</li>
+              <li>✗ Color loss - reds and yellows appear very dark</li>
+              <li>✗ Poor suitability for automated analysis</li>
+            </ul>
+
+            <h3>Recommendations for Enhancement</h3>
+            <p>This image would benefit from enhancement before use:</p>
+            <ul>
+              <li>🔧 Color correction - boost red and warm color channels</li>
+              <li>🔧 Contrast enhancement - apply histogram equalization or adaptive contrast</li>
+              <li>🔧 Denoising - apply noise reduction filter</li>
+              <li>🔧 Deblurring - consider deconvolution techniques</li>
+              <li>🔧 Blue color reduction - selectively reduce blue channel</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem">
+              <em>Note: Enhanced images can significantly improve this image's utility for marine research and computer vision applications.</em>
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Real-World Examples -->
+      <div class="container">
+        <section>
+          <h2>Real-World Coral Reef Examples</h2>
+          <p>Images from actual underwater surveys (REEFSCAN Great Barrier Reef data)</p>
+
+          <div class="gallery" id="reef-gallery">
+            <div class="gallery-item">
+              <img src="images/examples/REEFSCAN_DEEP_02_cam1_20240920_005753_206_4567.jpg" alt="Reef scan image 1" />
+              <div class="gallery-caption">
+                <strong>Reef Survey Image 1</strong><br />
+                Overall: 71/100 | Blue Water: 4/10 | Depth: ~20m
+              </div>
+            </div>
+            <div class="gallery-item">
+              <img src="images/examples/REEFSCAN_DEEP_02_cam1_20240920_011107_967_7746.jpg" alt="Reef scan image 2" />
+              <div class="gallery-caption">
+                <strong>Reef Survey Image 2</strong><br />
+                Overall: 65/100 | Blue Water: 6/10 | Depth: ~25m
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f9f9f9; border-radius: 8px">
+            <h3>Real-World Assessment Context</h3>
+            <p>
+              These images are from actual underwater coral reef monitoring surveys. The REEFSCAN project uses automated
+              underwater vehicles to document reef health and biodiversity.
+            </p>
+
+            <h3>Quality Assessment Value</h3>
+            <ul>
+              <li>✓ Automated quality filtering of survey data</li>
+              <li>✓ Standardized quality metrics across surveys</li>
+              <li>✓ Identification of best images for species ID</li>
+              <li>✓ Documentation of survey conditions</li>
+              <li>✓ Quality-aware dataset curation for machine learning</li>
+            </ul>
+
+            <h3>Research Applications</h3>
+            <p>Quality assessments enable:</p>
+            <ul>
+              <li>Coral health monitoring with consistent metrics</li>
+              <li>Automated species identification from high-quality images</li>
+              <li>Temporal comparison of reef conditions</li>
+              <li>Training high-quality datasets for AI models</li>
+              <li>Detection of declining coral cover and bleaching</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- Comparison Examples -->
+      <div class="container">
+        <section>
+          <h2>Quality Comparison</h2>
+          <p>Visual comparison showing the difference in quality scores</p>
+
+          <div
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; align-items: center"
+          >
+            <div>
+              <h3 style="text-align: center">Good Quality</h3>
+              <img
+                src="images/examples/18_img_good.png"
+                alt="Good quality"
+                style="width: 100%; border-radius: 8px; border: 3px solid #00cc77"
+              />
+              <div
+                style="
+                  text-align: center;
+                  margin-top: 1rem;
+                  font-size: 1.1rem;
+                  font-weight: bold;
+                  color: #00cc77;
+                "
+              >
+                Overall Quality: 82/100
+              </div>
+            </div>
+
+            <div>
+              <h3 style="text-align: center">Poor Quality</h3>
+              <img
+                src="images/examples/18_img_poor.png"
+                alt="Poor quality"
+                style="width: 100%; border-radius: 8px; border: 3px solid #cc3300"
+              />
+              <div
+                style="
+                  text-align: center;
+                  margin-top: 1rem;
+                  font-size: 1.1rem;
+                  font-weight: bold;
+                  color: #cc3300;
+                "
+              >
+                Overall Quality: 38/100
+              </div>
+            </div>
+          </div>
+
+          <div style="background-color: #f0f8ff; padding: 1.5rem; border-radius: 8px; margin-top: 2rem">
+            <h3>Key Differences</h3>
+            <table style="width: 100%">
+              <tr>
+                <th>Aspect</th>
+                <th>Good Quality</th>
+                <th>Poor Quality</th>
+              </tr>
+              <tr>
+                <td><strong>Clarity</strong></td>
+                <td>Clear details visible</td>
+                <td>Blurry and low detail</td>
+              </tr>
+              <tr>
+                <td><strong>Color Cast</strong></td>
+                <td>Minimal blue tint</td>
+                <td>Strong blue cast</td>
+              </tr>
+              <tr>
+                <td><strong>Contrast</strong></td>
+                <td>Good separation</td>
+                <td>Low contrast</td>
+              </tr>
+              <tr>
+                <td><strong>Usability</strong></td>
+                <td>Ready for analysis</td>
+                <td>Requires enhancement</td>
+              </tr>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- Understanding Metrics -->
+      <div class="container">
+        <section>
+          <h2>Understanding the Scores</h2>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              gap: 1.5rem;
+              margin: 1.5rem 0;
+            "
+          >
+            <div style="border: 2px solid #0047ab; border-radius: 8px; padding: 1.5rem">
+              <h3 style="color: #0047ab">Overall Quality</h3>
+              <p><strong>Range:</strong> 0-100</p>
+              <p>General assessment of image quality considering all factors.</p>
+              <ul style="font-size: 0.9rem">
+                <li><strong>80+:</strong> Excellent</li>
+                <li><strong>60-79:</strong> Good</li>
+                <li><strong>40-59:</strong> Fair</li>
+                <li><strong>&lt;40:</strong> Poor</li>
+              </ul>
+            </div>
+
+            <div style="border: 2px solid #0080ff; border-radius: 8px; padding: 1.5rem">
+              <h3 style="color: #0080ff">Blue Water Severity</h3>
+              <p><strong>Range:</strong> 0-10</p>
+              <p>Indicates presence and severity of blue-green color cast.</p>
+              <ul style="font-size: 0.9rem">
+                <li><strong>0-3:</strong> Minimal</li>
+                <li><strong>4-6:</strong> Moderate</li>
+                <li><strong>7-10:</strong> Severe</li>
+              </ul>
+            </div>
+
+            <div style="border: 2px solid #00d4ff; border-radius: 8px; padding: 1.5rem">
+              <h3 style="color: #00d4ff">Feature Usefulness</h3>
+              <p><strong>Range:</strong> 0-100</p>
+              <p>Suitability for computer vision and automated analysis.</p>
+              <ul style="font-size: 0.9rem">
+                <li><strong>80+:</strong> Excellent for CV</li>
+                <li><strong>60-79:</strong> Good for CV</li>
+                <li><strong>&lt;60:</strong> Limited CV use</li>
+              </ul>
+            </div>
+
+            <div style="border: 2px solid #87ceeb; border-radius: 8px; padding: 1.5rem">
+              <h3 style="color: #001a4d">Marine Science Value</h3>
+              <p><strong>Range:</strong> 0-100</p>
+              <p>Research value for species ID and marine studies.</p>
+              <ul style="font-size: 0.9rem">
+                <li><strong>80+:</strong> Excellent for research</li>
+                <li><strong>60-79:</strong> Good for research</li>
+                <li><strong>&lt;60:</strong> Limited research use</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Try Your Own -->
+      <div class="container text-center mt-2">
+        <h2>Try Your Own Images</h2>
+        <p style="font-size: 1.1rem; margin: 1.5rem 0">
+          Want to assess your own underwater images? Use our interactive web interface with no installation required.
+        </p>
+        <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" class="btn btn-primary"
+          >🚀 Try Live Demo</a
+        >
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        <strong>Underwater Image Quality Assessment (Underwater_IQA)</strong><br />
+        Version 2.1.0 | Open Source | <a href="https://github.com/alzayats/Image_Quality_Assessment" target="_blank">GitHub Repository</a>
+      </p>
+      <p style="margin-top: 1rem; font-size: 0.9rem">
+        Example images include real underwater survey data and standardized test images
+      </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

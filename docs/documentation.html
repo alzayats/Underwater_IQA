@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation - Underwater_IQA</title>
+    <meta name="description" content="Complete documentation for Underwater_IQA system including installation, usage, and API reference." />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <nav>
+        <a href="index.html" class="logo">🌊 Underwater_IQA</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="documentation.html">Documentation</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="methodology.html">Methodology</a></li>
+          <li>
+            <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank">Live Demo</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero" style="padding: 3rem 2rem">
+        <h1>Documentation</h1>
+        <p>Complete guide for installing and using Underwater_IQA</p>
+      </section>
+
+      <!-- Installation -->
+      <div class="container">
+        <section>
+          <h2>Installation</h2>
+
+          <h3>Prerequisites</h3>
+          <ul>
+            <li>Python 3.8 or higher</li>
+            <li>pip or conda package manager</li>
+            <li>Optional: GPU support (NVIDIA CUDA 11.0+ for deep learning)</li>
+          </ul>
+
+          <h3>Via PyPI (Recommended)</h3>
+          <pre><code>pip install underwater-iqa</code></pre>
+
+          <h3>From Source</h3>
+          <pre><code>git clone https://github.com/alzayats/Image_Quality_Assessment.git
+cd Image_Quality_Assessment/Underwater_IQA
+pip install -e .</code></pre>
+
+          <h3>GPU Support (Optional)</h3>
+          <p>For GPU acceleration with deep learning models:</p>
+          <pre><code>pip install underwater-iqa[gpu]
+# or install PyTorch manually:
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118</code></pre>
+
+          <h3>Verify Installation</h3>
+          <pre><code>python -c "from underwater_iqa import UnderwaterImageAssessor; print('✓ Installation successful!')"</code></pre>
+        </section>
+      </div>
+
+      <!-- Quick Start -->
+      <div class="container">
+        <section>
+          <h2>Quick Start</h2>
+
+          <h3>Assess a Single Image (Python API)</h3>
+          <pre><code>from underwater_iqa import UnderwaterImageAssessor
+
+# Initialize assessor
+assessor = UnderwaterImageAssessor(method='hybrid')
+
+# Assess an image
+results = assessor.assess_image('path/to/image.jpg')
+
+# Access results
+print(f"Overall Quality: {results['overall_quality']}")
+print(f"Blue Water Severity: {results['blue_water_severity']}")
+print(f"Feature Usefulness: {results['feature_usefulness']}")
+print(f"Marine Science Value: {results['marine_science_value']}")</code></pre>
+
+          <h3>Assess a Single Image (CLI)</h3>
+          <pre><code>assess-image path/to/image.jpg --method hybrid --visualize</code></pre>
+
+          <h3>Batch Processing (100+ images)</h3>
+          <pre><code>from underwater_iqa import BatchProcessor
+
+processor = BatchProcessor(method='deep-learning', num_workers=8)
+results = processor.process_directory('path/to/images/')
+processor.export_results('results.csv')</code></pre>
+
+          <h3>Batch Processing (CLI)</h3>
+          <pre><code>assess-batch path/to/images/ --method deep-learning --num-workers 8 --output results.csv</code></pre>
+        </section>
+      </div>
+
+      <!-- Assessment Methods -->
+      <div class="container">
+        <section>
+          <h2>Assessment Methods</h2>
+
+          <h3>Traditional Metrics</h3>
+          <pre><code>from underwater_iqa import UnderwaterImageAssessor
+
+assessor = UnderwaterImageAssessor(method='traditional')
+results = assessor.assess_image('image.jpg')
+
+# Access detailed metrics
+for metric_category, values in results['detailed_metrics'].items():
+    print(f"{metric_category}: {values}")</code></pre>
+
+          <p><strong>Characteristics:</strong></p>
+          <ul>
+            <li>Fully interpretable results</li>
+            <li>No GPU required</li>
+            <li>42 hand-crafted metrics</li>
+            <li>Speed: 40-60 images/sec on HPC (64 cores)</li>
+            <li>Accuracy: MAE 8.5 ± 2.1</li>
+          </ul>
+
+          <h3>Deep Learning</h3>
+          <pre><code>assessor = UnderwaterImageAssessor(
+    method='deep-learning',
+    model='efficient-net',  # or 'underwater-quality-net', 'vit', 'multi-metric'
+    device='cuda'
+)
+results = assessor.assess_image('image.jpg')</code></pre>
+
+          <p><strong>Characteristics:</strong></p>
+          <ul>
+            <li>Ultra-fast inference</li>
+            <li>Requires GPU for best performance</li>
+            <li>4 model architectures available</li>
+            <li>Speed: 500-1000 images/sec on RTX 3090</li>
+            <li>Accuracy: MAE 5.2 ± 1.6</li>
+          </ul>
+
+          <h3>Hybrid Ensemble (Recommended)</h3>
+          <pre><code>assessor = UnderwaterImageAssessor(
+    method='hybrid',
+    dl_weight=0.6,  # 60% deep learning
+    traditional_weight=0.4,  # 40% traditional metrics
+    model='efficient-net'
+)
+results = assessor.assess_image('image.jpg')</code></pre>
+
+          <p><strong>Characteristics:</strong></p>
+          <ul>
+            <li>Best overall accuracy</li>
+            <li>Combines speed and interpretability</li>
+            <li>Configurable weighting</li>
+            <li>Speed: 8-12 images/sec</li>
+            <li>Accuracy: MAE 4.8 ± 1.4 ⭐</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Output Structure -->
+      <div class="container">
+        <section>
+          <h2>Output Structure</h2>
+
+          <h3>Results Dictionary</h3>
+          <pre><code>{
+  "overall_quality": 72.5,           # 0-100 score
+  "feature_usefulness": 68.3,        # 0-100 score
+  "marine_science_value": 75.2,      # 0-100 score
+  "blue_water_severity": 6.8,        # 0-10 score
+  "processing_time": 0.245,          # seconds
+  "assessment_method": "hybrid",     # method used
+  "detailed_metrics": {
+    "color_saturation": {...},       # per-category breakdown
+    "contrast_brightness": {...},
+    "sharpness_clarity": {...},
+    ...
+  },
+  "recommendations": [
+    "Consider image enhancement: high blue water severity",
+    "Good color saturation for underwater image",
+    ...
+  ]
+}</code></pre>
+
+          <h3>Visualization Output</h3>
+          <p>When visualizations are enabled (--visualize flag), get an 11-panel report showing:</p>
+          <ul>
+            <li>Original image</li>
+            <li>Edge detection</li>
+            <li>Color space analysis (RGB, HSV, LAB)</li>
+            <li>Histogram analysis</li>
+            <li>Feature detection</li>
+            <li>Quality metrics summary</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Configuration -->
+      <div class="container">
+        <section>
+          <h2>Configuration Options</h2>
+
+          <h3>Assessor Configuration</h3>
+          <pre><code>assessor = UnderwaterImageAssessor(
+    method='hybrid',              # 'traditional', 'deep-learning', 'hybrid'
+    model='efficient-net',         # DL model architecture
+    device='cuda',                 # 'cuda' or 'cpu'
+    dl_weight=0.6,                 # 0-1, weight of DL in hybrid
+    traditional_weight=0.4,        # 0-1, weight of traditional in hybrid
+    batch_size=32,                 # for batch processing
+    num_workers=4,                 # parallel processing workers
+    visualize=True,                # generate visualization reports
+    output_format='json'            # 'json', 'csv', 'dict'
+)</code></pre>
+
+          <h3>Batch Processing Configuration</h3>
+          <pre><code>processor = BatchProcessor(
+    method='deep-learning',
+    model='vit',
+    num_workers=8,                # CPU cores for parallel processing
+    device='cuda',
+    batch_size=64,                # GPU batch size
+    visualize=True,
+    export_format='csv',          # 'csv', 'json', 'both'
+    progress_bar=True,
+    sample_images=None            # None or number to sample
+)</code></pre>
+        </section>
+      </div>
+
+      <!-- Advanced Usage -->
+      <div class="container">
+        <section>
+          <h2>Advanced Usage</h2>
+
+          <h3>Custom Metric Weighting</h3>
+          <pre><code>from underwater_iqa import MetricWeighter
+
+weighter = MetricWeighter({
+    'color_saturation': 1.5,      # emphasize color metrics
+    'sharpness': 1.2,
+    'contrast': 1.0,
+    'blue_water_detection': 2.0   # heavily weight blue water problem
+})
+
+results = assessor.assess_image('image.jpg', metric_weights=weighter)</code></pre>
+
+          <h3>Export Results</h3>
+          <pre><code>from underwater_iqa import ResultsExporter
+
+exporter = ResultsExporter()
+
+# Export to CSV
+exporter.to_csv(results, 'results.csv')
+
+# Export to JSON
+exporter.to_json(results, 'results.json')
+
+# Export with visualizations
+exporter.to_html_report(results, 'report.html')</code></pre>
+
+          <h3>Image Enhancement Suggestions</h3>
+          <pre><code>if results['blue_water_severity'] > 7:
+    print("Recommendation: Image enhancement needed")
+    print("Suggested techniques:")
+    print("- Color correction (red channel boost)")
+    print("- Contrast enhancement (histogram equalization)")
+    print("- Denoising filter")</code></pre>
+        </section>
+      </div>
+
+      <!-- Troubleshooting -->
+      <div class="container">
+        <section>
+          <h2>Troubleshooting</h2>
+
+          <h3>GPU Memory Issues</h3>
+          <p>If you get CUDA out-of-memory errors, reduce batch size:</p>
+          <pre><code>assessor = UnderwaterImageAssessor(method='deep-learning', batch_size=8)</code></pre>
+
+          <h3>Slow Processing</h3>
+          <p>Use deep learning for faster processing:</p>
+          <pre><code>assessor = UnderwaterImageAssessor(method='deep-learning', device='cuda')</code></pre>
+
+          <h3>Import Errors</h3>
+          <p>Make sure installation completed successfully:</p>
+          <pre><code>pip install --upgrade underwater-iqa</code></pre>
+
+          <h3>Model Download Issues</h3>
+          <p>Pre-download models manually:</p>
+          <pre><code>from underwater_iqa import PretrainedModels
+PretrainedModels.download_all()</code></pre>
+        </section>
+      </div>
+
+      <!-- Resources -->
+      <div class="container">
+        <section>
+          <h2>Resources</h2>
+          <ul>
+            <li><a href="https://github.com/alzayats/Image_Quality_Assessment" target="_blank">GitHub Repository</a> - Source code and issues</li>
+            <li><a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank">Live Demo</a> - Try without installing</li>
+            <li><a href="methodology.html">Methodology Guide</a> - Technical details</li>
+            <li><a href="gallery.html">Example Gallery</a> - See sample assessments</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="container text-center mt-2">
+        <h2>Ready to Get Started?</h2>
+        <div class="cta-buttons">
+          <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" class="btn btn-primary">Try Live Demo (No Installation)</a>
+          <a href="gallery.html" class="btn btn-secondary">View Examples</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        <strong>Underwater Image Quality Assessment (Underwater_IQA)</strong><br />
+        Version 2.1.0 | Open Source | <a href="https://github.com/alzayats/Image_Quality_Assessment" target="_blank">GitHub Repository</a>
+      </p>
+      <p style="margin-top: 1rem; font-size: 0.9rem">
+        For more details, visit the <a href="https://github.com/alzayats/Image_Quality_Assessment/tree/master/Underwater_IQA" target="_blank">GitHub Underwater_IQA folder</a>
+      </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
