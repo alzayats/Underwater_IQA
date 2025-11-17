@@ -2,8 +2,8 @@
 
 **A Comprehensive Research System for Assessing Underwater Imagery**
 
-[![GitHub](https://img.shields.io/badge/GitHub-Source%20Code-black?logo=github&style=flat-square)](https://github.com/alzayats/AIMS_JCU)
-[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Live%20Demo-blue?style=flat-square)](https://huggingface.co/spaces/YOUR_USERNAME/underwater-image-quality)
+[![Project Page](https://img.shields.io/badge/Project-Page-informational?style=flat-square)](https://alzayats.github.io/Underwater_IQA/)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Live%20Demo-blue?style=flat-square)](https://huggingface.co/spaces/Alzayats/underwater-image-quality)
 [![Paper](https://img.shields.io/badge/📄-Research%20Paper-red?style=flat-square)]()
 [![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&style=flat-square)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
@@ -216,7 +216,7 @@ python Underwater_IQA/web_app.py
 
 ### Hugging Face Spaces (No Installation)
 
-Simply visit: [🤗 Hugging Face Spaces Link](https://huggingface.co/spaces/YOUR_USERNAME/underwater-image-quality)
+Simply visit: [🤗 Hugging Face Spaces Link](https://huggingface.co/spaces/Alzayats/underwater-image-quality)
 
 No setup required - just upload your images!
 
@@ -343,7 +343,8 @@ If you use this system in your research, please cite:
 
 | Resource | Link | Description |
 |----------|------|---|
-| 🌐 **Web Demo** | [Hugging Face Spaces](https://huggingface.co/spaces/YOUR_USERNAME/underwater-image-quality) | Live web interface - no installation needed |
+| 🌐 **Web Demo** | [Hugging Face Spaces](https://huggingface.co/spaces/Alzayats/underwater-image-quality) | Live web interface - no installation needed |
+| 🌐 **Project Page** | [GitHub Pages](https://alzayats.github.io/Underwater_IQA/) | Project documentation and details |
 | 💻 **Source Code** | [GitHub Repository](https://github.com/alzayats/AIMS_JCU) | Complete source code and documentation |
 | 📖 **Documentation** | [Full Documentation](./docs/README.md) | Detailed technical documentation |
 | 📄 **Paper** | [Research Paper]() | Full research publication |
@@ -490,7 +491,7 @@ Educational institutions may use this freely for teaching purposes.
 ## ⚡ Get Started Now
 
 ### Try Online (No Setup)
-👉 **[Open Hugging Face Space](https://huggingface.co/spaces/YOUR_USERNAME/underwater-image-quality)**
+👉 **[Open Hugging Face Space](https://huggingface.co/spaces/Alzayats/underwater-image-quality)**
 
 ### Install Locally
 ```bash
@@ -531,7 +532,9 @@ Made with ❤️ for:
 
 ### 🚀 Ready to Assess Your Underwater Images?
 
-**[→ Open the Web App on Hugging Face Spaces ←](https://huggingface.co/spaces/YOUR_USERNAME/underwater-image-quality)**
+**[→ Open the Web App on Hugging Face Spaces ←](https://huggingface.co/spaces/Alzayats/underwater-image-quality)**
+
+Or explore the **[Project Page](https://alzayats.github.io/Underwater_IQA/)** for more details.
 
 ---
 
