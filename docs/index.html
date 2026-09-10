@@ -66,32 +66,27 @@
 
 <section class="band">
   <div class="shell">
-    <div class="rail"><p class="label">The problem</p></div>
+    <div class="rail"><p class="label">What a score means</p></div>
     <div class="prose">
       <h2>Low quality images were excluded</h2>
       <p class="lede">
         That sentence appears in methods sections across the literature, and it is
-        almost never reproducible.
-      </p>
-      <p>
-        The factors that make an underwater image usable are multi-dimensional and hard
-        to put into words: colour fidelity, contrast, feature density, turbidity. Two
-        observers looking at the same frame disagree, and neither can hand their
-        criteria to a third. The result is that quality screening consumes weeks of
-        expert time per expedition and still produces decisions no one else can repeat.
-      </p>
-      <div class="pull">
-        Quality is not a property a reader should have to take on trust. It is a
-        measurement, and it can be reported like one.
-      </div>
-      <p>
-        UNIQAT computes 37 metrics per image without needing a reference version of the
-        photograph, since pristine ground truth for a survey frame does not exist. The
-        metrics can be weighted into task-specific scores, so a photogrammetry
-        workflow and a coral health assessment can apply different thresholds to the
-        same underlying measurements and each say exactly what they did.
+        almost never reproducible. UNIQAT replaces it with a number, and with the
+        nine-category profile behind that number.
       </p>
     </div>
+  </div>
+  <div class="shell" style="margin-top:1.5rem">
+    <figure class="plate">
+      <img src="images/figures/fig9_quality_levels.jpg" width="1600" height="1319" loading="lazy"
+           alt="Five survey images at overall scores of 18, 35, 55, 72 and 88, each with its nine-category diagnostic radar profile">
+      <figcaption>
+        <b>What the scale looks like.</b> Real survey frames at five points on the
+        0 to 100 scale, each with its nine-category profile. A single scalar tells you
+        an image is bad. The profile tells you which degradation process did it, which
+        is what you need to decide between re-acquiring, correcting, or discarding.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
@@ -137,10 +132,31 @@
 
       <p style="margin-top:1.6rem">
         The depth relationship is the useful check. Nothing in the metrics knows about
-        depth, yet quality declines monotonically with it in all nine surveys, which is
-        what underwater optics predicts. That is evidence the scores track physical
-        degradation rather than noise.
+        depth, yet quality falls monotonically with it in all nine surveys, which is
+        what underwater optics predicts.
       </p>
+    </div>
+  </div>
+  <div class="shell" style="margin-top:1.5rem">
+    <div class="plate-pair">
+      <figure>
+        <img src="images/figures/depth_correlation.jpg" width="1600" height="782" loading="lazy"
+             alt="Quality score against sonar depth for nine surveys, and depth-binned mean quality showing monotonic decline">
+        <figcaption>
+          <b>Depth against quality.</b> Every survey shows a negative relationship,
+          across three reef sectors and three camera systems. Mean score falls from
+          74.8 above 3 m to 34.1 between 10 and 15 m.
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="images/figures/quality_distribution.jpg" width="1600" height="783" loading="lazy"
+             alt="Quality score distributions by reef sector and per-survey violin plots">
+        <figcaption>
+          <b>What raw survey data looks like.</b> Distributions by reef sector, then per
+          survey. Whitsundays sits low on water clarity, Townsville high. None of it was
+          filtered first.
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -170,10 +186,23 @@
       </ul>
       <p style="margin-top:1.6rem">
         The suite runs on a laptop and scales to a cluster. Deep learning architectures
-        are included as training-ready code for users who need faster single-image
-        inference and are willing to train on their own imagery.
+        are included as training-ready code for anyone needing faster single-image
+        inference and willing to train on their own imagery.
       </p>
     </div>
+  </div>
+  <div class="shell" style="margin-top:1.5rem">
+    <figure class="plate">
+      <img src="images/figures/cross_survey.jpg" width="1600" height="1239" loading="lazy"
+           alt="Cross-survey comparison: score distributions, depth correlations, usability breakdown and weight-profile means across nine surveys">
+      <figcaption>
+        <b>The same instrument across nine surveys.</b> Absolute scores move with
+        conditions, from a mean of 42.0 to 77.7, while the metric profiles stay in step:
+        Spearman rho of at least 0.97 for all 36 pairwise comparisons. That separation
+        between what changes and what does not is the property that makes scores
+        comparable between surveys.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
