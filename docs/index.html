@@ -71,22 +71,71 @@
       <h2>Low quality images were excluded</h2>
       <p class="lede">
         That sentence appears in methods sections across the literature, and it is
-        almost never reproducible. UNIQAT replaces it with a number, and with the
-        nine-category profile behind that number.
+        almost never reproducible. Move along the scale to see the frames behind the
+        numbers.
       </p>
     </div>
   </div>
-  <div class="shell" style="margin-top:1.5rem">
-    <figure class="plate">
-      <img src="images/figures/fig9_quality_levels.jpg" width="1600" height="1319" loading="lazy"
-           alt="Five survey images at overall scores of 18, 35, 55, 72 and 88, each with its nine-category diagnostic radar profile">
-      <figcaption>
-        <b>What the scale looks like.</b> Real survey frames at five points on the
-        0 to 100 scale, each with its nine-category profile. A single scalar tells you
-        an image is bad. The profile tells you which degradation process did it, which
-        is what you need to decide between re-acquiring, correcting, or discarding.
-      </figcaption>
-    </figure>
+
+  <div class="shell levels">
+    <div class="scale">
+      <div class="scale-track"><div class="scale-fill" id="scaleFill"></div></div>
+      <div class="scale-stops" role="tablist" aria-label="Quality score">
+        <button class="stop" role="tab" aria-selected="false" data-score="18">
+            <span class="pip"></span><span class="val">18</span><span class="cat">Unusable</span>
+          </button>
+          <button class="stop" role="tab" aria-selected="false" data-score="35">
+            <span class="pip"></span><span class="val">35</span><span class="cat">Poor</span>
+          </button>
+          <button class="stop" role="tab" aria-selected="true" data-score="55">
+            <span class="pip"></span><span class="val">55</span><span class="cat">Moderate</span>
+          </button>
+          <button class="stop" role="tab" aria-selected="false" data-score="72">
+            <span class="pip"></span><span class="val">72</span><span class="cat">Good</span>
+          </button>
+          <button class="stop" role="tab" aria-selected="false" data-score="88">
+            <span class="pip"></span><span class="val">88</span><span class="cat">Excellent</span>
+          </button>
+      </div>
+    </div>
+
+    <div class="level-view">
+      <figure>
+        <div class="level-frame"><img class="lvl" data-score="18" src="images/levels/photo_18.jpg" alt="Survey frame scoring 18, rated unusable" loading="lazy"><img class="lvl" data-score="35" src="images/levels/photo_35.jpg" alt="Survey frame scoring 35, rated poor" loading="lazy"><img class="lvl on" data-score="55" src="images/levels/photo_55.jpg" alt="Survey frame scoring 55, rated moderate" loading="lazy"><img class="lvl" data-score="72" src="images/levels/photo_72.jpg" alt="Survey frame scoring 72, rated good" loading="lazy"><img class="lvl" data-score="88" src="images/levels/photo_88.jpg" alt="Survey frame scoring 88, rated excellent" loading="lazy"></div>
+        <figcaption class="level-cap">Real survey frame at this score.</figcaption>
+      </figure>
+      <figure>
+        <div class="level-radar"><img class="lvl" data-score="18" src="images/levels/radar_18.png" alt="Nine-category diagnostic profile for a frame scoring 18" loading="lazy"><img class="lvl" data-score="35" src="images/levels/radar_35.png" alt="Nine-category diagnostic profile for a frame scoring 35" loading="lazy"><img class="lvl on" data-score="55" src="images/levels/radar_55.png" alt="Nine-category diagnostic profile for a frame scoring 55" loading="lazy"><img class="lvl" data-score="72" src="images/levels/radar_72.png" alt="Nine-category diagnostic profile for a frame scoring 72" loading="lazy"><img class="lvl" data-score="88" src="images/levels/radar_88.png" alt="Nine-category diagnostic profile for a frame scoring 88" loading="lazy"></div>
+        <figcaption class="level-cap">Nine-category profile. Axes are colour cast, contrast, sharpness, feature richness, visibility, underwater indices, information content, colour distribution and composite.</figcaption>
+      </figure>
+      <div class="level-read">
+        <div class="read" data-score="18" hidden>
+            <p class="verdict">Unusable</p>
+            <h3>18</h3>
+            <ul><li>Severe colour cast</li><li>No visible features</li><li>Low information</li></ul>
+          </div>
+        <div class="read" data-score="35" hidden>
+            <p class="verdict">Poor</p>
+            <h3>35</h3>
+            <ul><li>Strong colour cast</li><li>Blurred details</li><li>Low contrast</li></ul>
+          </div>
+        <div class="read" data-score="55">
+            <p class="verdict">Moderate</p>
+            <h3>55</h3>
+            <ul><li>Moderate colour shift</li><li>Partial detail visible</li><li>Enhancement helpful</li></ul>
+          </div>
+        <div class="read" data-score="72" hidden>
+            <p class="verdict">Good</p>
+            <h3>72</h3>
+            <ul><li>Minor colour shift</li><li>Clear features</li><li>Suitable for analysis</li></ul>
+          </div>
+        <div class="read" data-score="88" hidden>
+            <p class="verdict">Excellent</p>
+            <h3>88</h3>
+            <ul><li>Natural colours</li><li>Sharp detail</li><li>High confidence</li></ul>
+          </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -137,29 +186,23 @@
       </p>
     </div>
   </div>
-  <div class="shell" style="margin-top:1.5rem">
-    <div class="plate-pair">
-      <figure>
-        <img src="images/figures/depth_correlation.jpg" width="1600" height="782" loading="lazy"
-             alt="Quality score against sonar depth for nine surveys, and depth-binned mean quality showing monotonic decline">
-        <figcaption>
-          <b>Depth against quality.</b> Every survey shows a negative relationship,
-          across three reef sectors and three camera systems. Mean score falls from
-          74.8 above 3 m to 34.1 between 10 and 15 m.
-        </figcaption>
-      </figure>
-      <figure>
-        <img src="images/figures/quality_distribution.jpg" width="1600" height="783" loading="lazy"
-             alt="Quality score distributions by reef sector and per-survey violin plots">
-        <figcaption>
-          <b>What raw survey data looks like.</b> Distributions by reef sector, then per
-          survey. Whitsundays sits low on water clarity, Townsville high. None of it was
-          filtered first.
-        </figcaption>
-      </figure>
-    </div>
+  <div class="shell" style="margin-top:1.2rem">
+    <figure class="plate" style="margin-top:0">
+      <svg class="depth-chart" id="depthChart" viewBox="0 0 520 250" role="img"
+           aria-label="Mean quality score falls from 74.8 above 3 metres to 34.1 between 10 and 15 metres">
+        <line class="grid-line" x1="36" y1="26.0" x2="504" y2="26.0"/><text class="axis-text" x="28" y="29.0" text-anchor="end">80</text><line class="grid-line" x1="36" y1="99.6" x2="504" y2="99.6"/><text class="axis-text" x="28" y="102.6" text-anchor="end">60</text><line class="grid-line" x1="36" y1="173.2" x2="504" y2="173.2"/><text class="axis-text" x="28" y="176.2" text-anchor="end">40</text>
+        <path class="curve" style="--len:492" d="M36.0,45.1 L153.0,84.9 L270.0,125.0 L387.0,167.7 L504.0,194.9"/>
+        <circle class="dot" style="--d:450ms" cx="36.0" cy="45.1" r="4"/><text class="value-text" x="36.0" y="34.1" text-anchor="middle">74.8</text><text class="axis-text" x="36.0" y="230" text-anchor="middle">≤3 m</text><text class="axis-text" x="36.0" y="243" text-anchor="middle" opacity="0.7">n=32,771</text><circle class="dot" style="--d:580ms" cx="153.0" cy="84.9" r="4"/><text class="value-text" x="153.0" y="73.9" text-anchor="middle">64.0</text><text class="axis-text" x="153.0" y="230" text-anchor="middle">3-5 m</text><text class="axis-text" x="153.0" y="243" text-anchor="middle" opacity="0.7">n=43,189</text><circle class="dot" style="--d:710ms" cx="270.0" cy="125.0" r="4"/><text class="value-text" x="270.0" y="114.0" text-anchor="middle">53.1</text><text class="axis-text" x="270.0" y="230" text-anchor="middle">5-7 m</text><text class="axis-text" x="270.0" y="243" text-anchor="middle" opacity="0.7">n=30,254</text><circle class="dot" style="--d:840ms" cx="387.0" cy="167.7" r="4"/><text class="value-text" x="387.0" y="156.7" text-anchor="middle">41.5</text><text class="axis-text" x="387.0" y="230" text-anchor="middle">7-10 m</text><text class="axis-text" x="387.0" y="243" text-anchor="middle" opacity="0.7">n=18,923</text><circle class="dot" style="--d:970ms" cx="504.0" cy="194.9" r="4"/><text class="value-text" x="504.0" y="183.9" text-anchor="middle">34.1</text><text class="axis-text" x="504.0" y="230" text-anchor="middle">10-15 m</text><text class="axis-text" x="504.0" y="243" text-anchor="middle" opacity="0.7">n=4,001</text>
+      </svg>
+      <figcaption>
+        <b>Quality against depth, 130,845 images.</b> Nothing in the metrics knows how
+        deep a frame was taken. The decline is what wavelength dependent absorption
+        predicts, which is the evidence that the scores track physical degradation
+        rather than noise. Every one of the nine surveys shows it independently.
+      </figcaption>
+    </figure>
   </div>
-</section>
+  </section>
 
 <section class="band">
   <div class="shell">
@@ -190,19 +233,6 @@
         inference and willing to train on their own imagery.
       </p>
     </div>
-  </div>
-  <div class="shell" style="margin-top:1.5rem">
-    <figure class="plate">
-      <img src="images/figures/cross_survey.jpg" width="1600" height="1239" loading="lazy"
-           alt="Cross-survey comparison: score distributions, depth correlations, usability breakdown and weight-profile means across nine surveys">
-      <figcaption>
-        <b>The same instrument across nine surveys.</b> Absolute scores move with
-        conditions, from a mean of 42.0 to 77.7, while the metric profiles stay in step:
-        Spearman rho of at least 0.97 for all 36 pairwise comparisons. That separation
-        between what changes and what does not is the property that makes scores
-        comparable between surveys.
-      </figcaption>
-    </figure>
   </div>
 </section>
 

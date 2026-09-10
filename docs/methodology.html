@@ -65,17 +65,20 @@
           <h2>The 37-Metric System</h2>
           <p>Underwater_IQA evaluates images using 37 hand-crafted metrics. They are grouped into 10 implementation categories below. The manuscript groups the same 37 metrics into nine diagnostic categories, organised by the degradation process each one targets rather than by how it is computed.</p>
 
-          <h3>1. Color and Saturation (5 metrics)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">5</span>Color and Saturation</summary>
+              <ul>
             <li><strong>Color Saturation Index:</strong> Measures overall color vividness</li>
             <li><strong>Red Channel Intensity:</strong> Evaluates warm color preservation</li>
             <li><strong>Color Variance:</strong> Assesses color diversity</li>
             <li><strong>Blue-Green Ratio:</strong> Detects blue water color cast</li>
             <li><strong>Color Histogram Spread:</strong> Measures color distribution</li>
           </ul>
+            </details>
 
-          <h3>2. Contrast and Brightness (6 metrics)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">6</span>Contrast and Brightness</summary>
+              <ul>
             <li><strong>Contrast Ratio:</strong> Object-background separation</li>
             <li><strong>Brightness Level:</strong> Overall image luminance</li>
             <li><strong>Contrast-to-Noise Ratio (CNR):</strong> Distinguishability in noisy conditions</li>
@@ -83,9 +86,11 @@
             <li><strong>Michelson Contrast:</strong> Visibility contrast measure</li>
             <li><strong>Histogram Peak Ratio:</strong> Pixel value distribution clustering</li>
           </ul>
+            </details>
 
-          <h3>3. Sharpness and Clarity (7 metrics)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">7</span>Sharpness and Clarity</summary>
+              <ul>
             <li><strong>Laplacian Variance:</strong> Edge detection-based sharpness</li>
             <li><strong>Tenengrad Measure:</strong> Gradient-based focus quality</li>
             <li><strong>Sobel Edge Strength:</strong> Edge definition strength</li>
@@ -94,53 +99,68 @@
             <li><strong>Fine Detail Preservation:</strong> Small feature clarity</li>
             <li><strong>Texture Clarity:</strong> Surface pattern visibility</li>
           </ul>
+            </details>
 
-          <h3>4. Frequency Domain Analysis (4 metrics)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">4</span>Frequency Domain Analysis</summary>
+              <ul>
             <li><strong>High-Frequency Energy:</strong> Detail preservation in FFT domain</li>
             <li><strong>Power Spectrum Spread:</strong> Frequency content diversity</li>
             <li><strong>Frequency Peak Sharpness:</strong> Concentrated frequency energy</li>
             <li><strong>Mid-Frequency Balance:</strong> Medium detail presence</li>
           </ul>
+            </details>
 
-          <h3>5. Edge Detection (3 metrics)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">3</span>Edge Detection</summary>
+              <ul>
             <li><strong>Edge Density:</strong> Number and prominence of edges</li>
             <li><strong>Edge Sharpness:</strong> Edge definition clarity</li>
             <li><strong>Edge Continuity:</strong> Connected edge structures</li>
           </ul>
+            </details>
 
-          <h3>6. Noise Detection (4 metrics)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">4</span>Noise Detection</summary>
+              <ul>
             <li><strong>Noise Level:</strong> Estimated random pixel variations</li>
             <li><strong>Signal-to-Noise Ratio (SNR):</strong> Useful signal vs noise</li>
             <li><strong>Speckle Noise Detection:</strong> Salt-and-pepper noise presence</li>
             <li><strong>Noise Variance:</strong> Spatial distribution of noise</li>
           </ul>
+            </details>
 
-          <h3>7. Color Space Analysis (3 metrics)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">3</span>Color Space Analysis</summary>
+              <ul>
             <li><strong>HSV Saturation:</strong> Color space-based saturation measure</li>
             <li><strong>LAB Color Distribution:</strong> Perceptual color space analysis</li>
             <li><strong>Color Space Spread:</strong> Diversity in color space representation</li>
           </ul>
+            </details>
 
-          <h3>8. Structural Similarity (2 metrics)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">2</span>Structural Similarity</summary>
+              <ul>
             <li><strong>SSIM Index:</strong> Structural similarity measure</li>
             <li><strong>Luminance Correlation:</strong> Brightness pattern similarity</li>
           </ul>
+            </details>
 
-          <h3>9. Histogram Analysis (2 metrics)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">2</span>Histogram Analysis</summary>
+              <ul>
             <li><strong>Histogram Entropy:</strong> Information content in pixel distribution</li>
             <li><strong>Histogram Smoothness:</strong> Gradual vs abrupt value changes</li>
           </ul>
+            </details>
 
-          <h3>10. Custom Underwater Metrics (1 metric)</h3>
-          <ul>
+          <details class="cat">
+              <summary><span class="cat-n">1</span>Custom Underwater Metrics</summary>
+              <ul>
             <li><strong>Underwater Color Image Quality Evaluation (UCIQE):</strong> Underwater-specific metric</li>
           </ul>
+            </details>
         </section>
       </div>
 
@@ -203,9 +223,9 @@
         <section>
           <h2>Deep Learning Pipeline</h2>
 
-          <h3>Four Model Architectures</h3>
-
-          <h4>1. UnderwaterQualityNet (Custom CNN)</h4>
+          <details class="cat">
+              <summary>Four Model Architectures</summary>
+              <h4>1. UnderwaterQualityNet (Custom CNN)</h4>
           <p>Custom convolutional neural network designed specifically for underwater image assessment.</p>
           <ul>
             <li><strong>Architecture:</strong> 5-layer CNN with batch normalization</li>
@@ -243,18 +263,21 @@
             <li><strong>Speed:</strong> ~4ms per image on RTX 3090</li>
             <li><strong>Benefits:</strong> Interpretable outputs, metric-level insights</li>
           </ul>
-
-          <h3>Training Approach</h3>
-          <ul>
+            </details>
+            <details class="cat">
+              <summary>Training Approach</summary>
+              <ul>
             <li><strong>Dataset:</strong> Underwater images with human quality annotations</li>
             <li><strong>Training Labels:</strong> Generated by the traditional 37-metric pipeline</li>
             <li><strong>Loss Function:</strong> Mean Absolute Error (MAE) for regression</li>
             <li><strong>Augmentation:</strong> Color jittering, rotation, flipping, noise addition</li>
             <li><strong>Validation:</strong> Correlation and MAE metrics against ground truth</li>
           </ul>
+            </details>
 
-          <h3>Performance Metrics</h3>
-          <table>
+          <details class="cat">
+              <summary>Performance Metrics</summary>
+              <table>
             <tr>
               <th>Model</th>
               <th>Speed</th>
@@ -291,7 +314,8 @@
               <td>15M</td>
             </tr>
           </table>
-        </section>
+            </details>
+            </section>
       </div>
 
       <!-- Hybrid Ensemble -->
@@ -304,14 +328,15 @@
             of accuracy, interpretability, and speed.
           </p>
 
-          <h3>Algorithm</h3>
-          <p style="font-family: monospace; background-color: #f5f5f5; padding: 1rem; border-radius: 5px">
+          <details class="cat">
+              <summary>Algorithm</summary>
+              <p style="font-family: monospace; background-color: #f5f5f5; padding: 1rem; border-radius: 5px">
             Hybrid Score = (DL Weight × DL Score) + (Traditional Weight × Traditional Score)<br />
             Default: 60% Deep Learning + 40% Traditional Metrics<br />
             Configurable for different use cases
           </p>
-
-          <h3>Advantages</h3>
+            </details>
+            <h3>Advantages</h3>
           <div class="features-grid">
             <div class="feature-card">
               <h3>Accuracy</h3>
@@ -322,17 +347,20 @@
               <p>Traditional metrics provide explainability alongside DL speed</p>
             </div>
             <div class="feature-card">
-              <h3>Speed</h3>
+              <details class="cat">
+              <summary>Speed</summary>
               <p>Faster than pure traditional metrics, slower but more reliable than pure DL</p>
             </div>
             <div class="feature-card">
-              <h3>Flexibility</h3>
+            </details>
+            <h3>Flexibility</h3>
               <p>Configurable weights for different prioritization needs</p>
             </div>
           </div>
 
-          <h3>Measured Performance</h3>
-          <p>
+          <details class="cat">
+              <summary>Measured Performance</summary>
+              <p>
             Figures below are measured, not estimated. The traditional pipeline was
             timed over 130,845 survey images; the network figures are forward-pass
             cost, which depends on architecture rather than on training.
@@ -376,7 +404,8 @@
             fidelity depends on the imagery you train on. Held-out fidelity for one
             trained example is reported in the manuscript.
           </p>
-        </section>
+            </details>
+            </section>
       </div>
 
       <!-- Benchmarks and Performance -->
@@ -384,16 +413,18 @@
         <section>
           <h2>Performance Benchmarks</h2>
 
-          <h3>Accuracy Metrics</h3>
-          <p>Evaluated on diverse underwater image datasets:</p>
+          <details class="cat">
+              <summary>Accuracy Metrics</summary>
+              <p>Evaluated on diverse underwater image datasets:</p>
           <ul>
             <li><strong>Mean Absolute Error (MAE):</strong> Average absolute difference from ground truth</li>
             <li><strong>Pearson Correlation:</strong> Correlation with human quality ratings</li>
             <li><strong>Spearman Rank Correlation:</strong> Ranking consistency</li>
           </ul>
-
-          <h3>Speed Benchmarks</h3>
-          <table style="margin: 2rem 0">
+            </details>
+            <details class="cat">
+              <summary>Speed Benchmarks</summary>
+              <table style="margin: 2rem 0">
             <tr>
               <th>Configuration</th>
               <th>Dataset Size</th>
@@ -425,9 +456,10 @@
               <td>8-12 img/sec</td>
             </tr>
           </table>
-
-          <h3>Quality Accuracy by Category</h3>
-          <p>Correlation with human raters by quality dimension:</p>
+            </details>
+            <details class="cat">
+              <summary>Quality Accuracy by Category</summary>
+              <p>Correlation with human raters by quality dimension:</p>
           <table style="margin: 2rem 0">
             <tr>
               <th>Quality Dimension</th>
@@ -455,7 +487,8 @@
               <td>500 images</td>
             </tr>
           </table>
-        </section>
+            </details>
+            </section>
       </div>
 
       <!-- Applications -->
@@ -497,8 +530,9 @@
         <section>
           <h2>References and Related Work</h2>
 
-          <h3>Key Metrics Cited</h3>
-          <ul>
+          <details class="cat">
+              <summary>Key Metrics Cited</summary>
+              <ul>
             <li><strong>UCIQE (Underwater Color Image Quality Evaluation)</strong> - Yang & Sowmya (2015). "An underwater
               image quality evaluation metric."
             </li>
@@ -509,17 +543,18 @@
               structural similarity."
             </li>
           </ul>
-
-          <h3>Related Research Areas</h3>
-          <ul>
+            </details>
+            <details class="cat">
+              <summary>Related Research Areas</summary>
+              <ul>
             <li>Underwater Image Enhancement and Restoration</li>
             <li>No-Reference Image Quality Assessment (NR-IQA)</li>
             <li>Marine Image Analysis and Computer Vision</li>
             <li>Deep Learning for Image Quality</li>
             <li>Perceptual Image Quality Metrics</li>
           </ul>
-
-          <h3>GitHub Repository</h3>
+            </details>
+            <h3>GitHub Repository</h3>
           <p>Implementation details are given in the manuscript. Source will accompany publication.</p>
         </section>
       </div>

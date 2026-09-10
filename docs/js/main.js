@@ -101,3 +101,54 @@
     pre.appendChild(btn);
   });
 })();
+
+/* Quality stepper. The five frames and profiles are the same ones printed in the
+   manuscript figure; this just lets you move between them instead of scrolling
+   past all five at once. Works from the markup's default state without JS. */
+(function initLevels() {
+  const stops = Array.from(document.querySelectorAll('.stop'));
+  if (!stops.length) return;
+
+  const fill = document.getElementById('scaleFill');
+  const imgs = Array.from(document.querySelectorAll('.level-frame .lvl, .level-radar .lvl'));
+  const reads = Array.from(document.querySelectorAll('.level-read .read'));
+
+  function select(index) {
+    const score = stops[index].dataset.score;
+    stops.forEach((s, i) => s.setAttribute('aria-selected', i === index ? 'true' : 'false'));
+    imgs.forEach((im) => im.classList.toggle('on', im.dataset.score === score));
+    reads.forEach((r) => { r.hidden = r.dataset.score !== score; });
+    if (fill) fill.style.width = (index / (stops.length - 1) * 100) + '%';
+  }
+
+  stops.forEach((s, i) => {
+    s.addEventListener('click', () => select(i));
+    s.addEventListener('keydown', (e) => {
+      let next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = Math.min(stops.length - 1, i + 1);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = Math.max(0, i - 1);
+      if (e.key === 'Home') next = 0;
+      if (e.key === 'End') next = stops.length - 1;
+      if (next !== null) { select(next); stops[next].focus(); e.preventDefault(); }
+    });
+  });
+
+  select(stops.findIndex((s) => s.getAttribute('aria-selected') === 'true') || 2);
+})();
+
+/* Draw the depth curve once it is actually on screen. Honours reduced motion by
+   simply arriving already drawn. */
+(function initChart() {
+  const chart = document.getElementById('depthChart');
+  if (!chart) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+    chart.classList.add('in');
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { chart.classList.add('in'); io.disconnect(); }
+    });
+  }, { threshold: 0.35 });
+  io.observe(chart);
+})();

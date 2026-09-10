@@ -72,7 +72,7 @@ img { max-width: 100%; display: block; }
 .masthead nav a:hover { color: var(--rust); }
 
 /* ---------- title block ---------- */
-.title-block { padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2rem, 5vw, 3.5rem); }
+.title-block { padding: clamp(2.2rem, 4.5vw, 3.6rem) 0 clamp(1.4rem, 2.5vw, 2rem); }
 .title-block h1 {
   font-size: var(--step-3);
   max-width: 22ch;
@@ -103,10 +103,10 @@ img { max-width: 100%; display: block; }
 .actions a:not(:first-child):hover { border-color: var(--ink); color: var(--ink); }
 
 /* ---------- the comparison, the one thing worth remembering ---------- */
-.compare-wrap { padding-bottom: clamp(3rem, 7vw, 5rem); }
+.compare-wrap { padding-bottom: clamp(1.8rem, 3.5vw, 2.8rem); }
 .compare {
   position: relative; overflow: hidden; background: var(--ink);
-  aspect-ratio: 791 / 537; cursor: ew-resize; user-select: none;
+  aspect-ratio: 791 / 537; max-height: 62vh; cursor: ew-resize; user-select: none;
   border: 1px solid var(--rule);
 }
 .compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -130,7 +130,7 @@ img { max-width: 100%; display: block; }
 .compare-note { margin-top: 0.9rem; font-size: var(--step--1); color: var(--ink-soft); max-width: 60ch; }
 
 /* ---------- article grid: metadata rail + prose ---------- */
-.band { border-top: 1px solid var(--rule); padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+.band { border-top: 1px solid var(--rule); padding: clamp(1.9rem, 3.6vw, 2.9rem) 0; }
 .band > .shell { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); gap: var(--gap); }
 .band h2 { font-size: var(--step-2); max-width: 20ch; margin-bottom: 1.4rem; }
 .rail { position: sticky; top: 2rem; align-self: start; }
@@ -172,7 +172,7 @@ footer .shell { display: flex; justify-content: space-between; gap: 1.5rem; flex
 footer a { color: var(--ink-soft); }
 
 /* ---------- generic content pages ---------- */
-.doc { padding: clamp(2rem, 5vw, 3.5rem) 0 4rem; }
+.doc { padding: clamp(1.4rem, 3vw, 2.2rem) 0 2.5rem; }
 .doc h2 { font-size: var(--step-2); margin: 2.6rem 0 1rem; }
 .doc h3 { font-size: var(--step-1); margin: 2rem 0 0.7rem; }
 .doc ul, .doc ol { max-width: var(--measure); padding-left: 1.1rem; }
@@ -254,14 +254,14 @@ body > header .logo {
 
 .hero {
   max-width: 78rem; margin: 0 auto;
-  padding: clamp(2.5rem, 6vw, 4.5rem) var(--gap) clamp(1.5rem, 3vw, 2.5rem) !important;
+  padding: clamp(2rem, 4vw, 3rem) var(--gap) clamp(1.2rem, 2.2vw, 1.8rem) !important;
   border-bottom: 1px solid var(--rule);
 }
 .hero h1 { font-size: var(--step-3); font-weight: 400; max-width: 20ch; margin-bottom: 0.8rem; }
 .hero p { font-size: var(--step-1); color: var(--ink-soft); max-width: 44ch; line-height: 1.42; }
 
 .container {
-  max-width: 78rem; margin: 0 auto; padding: clamp(2rem, 4vw, 3rem) var(--gap);
+  max-width: 78rem; margin: 0 auto; padding: clamp(1.3rem, 2.4vw, 1.9rem) var(--gap);
 }
 .container > section > h2 { font-size: var(--step-2); margin: 0 0 1.2rem; }
 .container > section > h3 { font-size: var(--step-1); margin: 2rem 0 0.7rem; }
@@ -343,3 +343,90 @@ body > footer a { color: var(--ink-soft); }
 .plate-pair figure { margin: 0; }
 .plate-pair img { width: 100%; border: 1px solid var(--rule); }
 .plate-pair figcaption { font-family: Archivo, sans-serif; font-size: 0.79rem; line-height: 1.55; color: var(--ink-faint); margin-top: 0.7rem; }
+
+/* ==========================================================================
+   Quality stepper: pick a point on the 0 to 100 scale and see the frame that
+   scored it, with its nine-category profile. Replaces a 1300px static figure.
+   ========================================================================== */
+/* not a rail+prose grid: the stepper uses the full width */
+.band > .shell.levels { display: block; margin-top: 0.5rem; }
+.scale { position: relative; margin: 0 0 1.6rem; padding-top: 0.4rem; }
+.scale-track { position: relative; height: 2px; background: var(--rule); }
+.scale-fill {
+  position: absolute; left: 0; top: 0; height: 2px; background: var(--rust);
+  width: var(--fill, 50%); transition: width 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scale-stops { display: flex; justify-content: space-between; margin-top: -0.55rem; }
+.stop {
+  appearance: none; background: var(--paper); border: 0; padding: 0 0.2rem;
+  cursor: pointer; font-family: Archivo, sans-serif; text-align: center; color: var(--ink-faint);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+.stop .pip {
+  width: 0.62rem; height: 0.62rem; border-radius: 50%;
+  border: 2px solid var(--rule); background: var(--paper);
+  transition: transform 320ms cubic-bezier(0.22,1,0.36,1), background 200ms, border-color 200ms;
+}
+.stop .val { font-size: 0.95rem; font-variant-numeric: tabular-nums; transition: color 200ms; }
+.stop .cat { font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase; opacity: 0; transition: opacity 220ms; }
+.stop:hover .pip { border-color: var(--ink-faint); }
+.stop[aria-selected="true"] .pip { background: var(--rust); border-color: var(--rust); transform: scale(1.5); }
+.stop[aria-selected="true"] .val { color: var(--ink); font-weight: 600; }
+.stop[aria-selected="true"] .cat { opacity: 1; color: var(--rust); }
+
+.level-view { display: grid; grid-template-columns: 1.35fr 0.9fr 1fr; gap: var(--gap); align-items: start; }
+.level-view figure { margin: 0; }
+.level-frame { position: relative; overflow: hidden; border: 1px solid var(--rule); aspect-ratio: 520 / 610; background: var(--paper-deep); }
+.level-frame img, .level-radar img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.level-frame img.on, .level-radar img.on { opacity: 1; }
+.level-radar { position: relative; aspect-ratio: 1; }   /* glyphs are circular PNGs, no frame needed */
+.level-radar img { object-fit: contain; }
+.level-read h3 { font-size: var(--step-2); font-weight: 400; margin-bottom: 0.2rem; }
+.level-read .verdict { font-family: Archivo, sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); }
+.level-read ul { list-style: none; margin: 1.1rem 0 0; padding: 0; max-width: 26ch; }
+.level-read li { padding: 0.5rem 0; border-bottom: 1px solid var(--rule); font-size: 0.96rem; color: var(--ink-soft); }
+.level-cap { font-family: Archivo, sans-serif; font-size: 0.74rem; color: var(--ink-faint); margin-top: 0.6rem; line-height: 1.5; }
+
+/* ---------- inline depth chart, drawn from the binned means ---------- */
+.depth-chart { width: 100%; height: auto; overflow: visible; }
+.depth-chart .grid-line { stroke: var(--rule); stroke-width: 1; }
+.depth-chart .axis-text { font-family: Archivo, sans-serif; font-size: 10px; fill: var(--ink-faint); }
+.depth-chart .value-text { font-family: Archivo, sans-serif; font-size: 11px; font-weight: 600; fill: var(--ink); }
+.depth-chart .curve { fill: none; stroke: var(--rust); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: var(--len, 600); stroke-dashoffset: var(--len, 600); }
+.depth-chart.in .curve { transition: stroke-dashoffset 1300ms cubic-bezier(0.22, 1, 0.36, 1); stroke-dashoffset: 0; }
+.depth-chart .dot { fill: var(--rust); opacity: 0; }
+.depth-chart.in .dot { transition: opacity 400ms ease-out var(--d, 0ms); opacity: 1; }
+
+@media (max-width: 62rem) {
+  .level-view { grid-template-columns: 1fr 1fr; }
+  .level-read { grid-column: 1 / -1; }
+}
+@media (max-width: 40rem) {
+  .level-view { grid-template-columns: 1fr; }
+  .stop .cat { display: none; }
+}
+
+/* ---------- collapsible metric categories on the methodology page ---------- */
+details.cat { border-bottom: 1px solid var(--rule); max-width: 46rem; }
+details.cat summary {
+  cursor: pointer; list-style: none; padding: 0.85rem 0;
+  display: flex; align-items: baseline; gap: 0.9rem;
+  font-size: 1.02rem; color: var(--ink);
+}
+details.cat summary::-webkit-details-marker { display: none; }
+details.cat summary::after {
+  content: "+"; margin-left: auto; font-family: Archivo, sans-serif;
+  color: var(--ink-faint); font-size: 1.1rem; line-height: 1;
+}
+details.cat[open] summary::after { content: "\2212"; }
+details.cat summary:hover { color: var(--rust); }
+details.cat .cat-n {
+  font-family: Archivo, sans-serif; font-variant-numeric: tabular-nums;
+  font-size: 0.8rem; color: var(--rust); min-width: 1.3rem;
+}
+details.cat ul { margin: 0 0 1.1rem; padding-left: 2.2rem; }
+details.cat li { font-size: 0.94rem; color: var(--ink-soft); }
