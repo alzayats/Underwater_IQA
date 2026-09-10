@@ -1,292 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Underwater Image Quality Assessment (Underwater_IQA)</title>
-    <meta
-      name="description"
-      content="A comprehensive system for assessing underwater image quality with focus on the blue water problem and marine science applications."
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <header>
-      <nav>
-        <a href="index.html" class="logo">🌊 Underwater_IQA</a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="documentation.html">Documentation</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="methodology.html">Methodology</a></li>
-          <li>
-            <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank">Live Demo</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNIQAT: Underwater Image Quality Assessment</title>
+<meta name="description" content="An open-source toolkit for reproducible image quality assessment in marine surveys. Reference-free metrics evaluated on 130,845 coral reef images.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <h1>Underwater Image Quality Assessment</h1>
-      <p>Comprehensive assessment system for underwater images with focus on the "blue water problem"</p>
-      <div class="cta-buttons">
-        <a href="documentation.html" class="btn btn-primary">Get Started</a>
-        <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" class="btn btn-secondary"
-          >Try Live Demo</a
-        >
-      </div>
-    </section>
+<header class="masthead">
+  <div class="shell">
+    <a class="wordmark" href="index.html"><b>UNIQAT</b> Underwater Image Quality Assessment</a>
+    <nav>
+      <a href="methodology.html">Methodology</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank" rel="noopener">Demo</a>
+    </nav>
+  </div>
+</header>
 
-    <main>
-      <!-- Overview Section -->
-      <div class="container">
-        <section>
-          <h2>What is Underwater_IQA?</h2>
-          <p>
-            A state-of-the-art system for assessing underwater image quality with specific focus on the
-            <span class="highlight">"blue water problem"</span> and determining image usefulness for marine science
-            research and computer vision applications.
-          </p>
-          <p><strong>Version 2.1.0</strong> - Now with Deep Learning pipeline, HPC-aware multiprocessing, and hybrid assessment!</p>
+<div class="shell">
+  <div class="title-block">
+    <p class="label">Marine imaging / Reproducible methods</p>
+    <h1>Measuring what a survey photograph is actually worth.</h1>
+    <p class="standfirst">
+      Modern reef surveys return tens of thousands of images per expedition, and a
+      substantial fraction of them are unusable. UNIQAT scores every frame against
+      37 reference-free metrics so that the decision to keep or discard an image
+      becomes a number a reader can check, rather than a judgement made once and
+      never written down.
+    </p>
 
-          <h3>Key Capabilities</h3>
-          <ul>
-            <li><strong>42 Comprehensive Metrics</strong> - Hand-crafted metrics based on image science principles</li>
-            <li><strong>Blue Water Problem Detection</strong> - Severity scoring on 0-10 scale</li>
-            <li><strong>Multi-Score Assessment</strong> - Overall quality, feature usefulness, marine science value</li>
-            <li><strong>Three Assessment Approaches</strong> - Traditional, Deep Learning, or Hybrid Ensemble</li>
-            <li><strong>Beautiful Visualizations</strong> - 11-panel comprehensive quality reports</li>
-            <li><strong>Batch Processing</strong> - Handle 10,000+ images efficiently</li>
-          </ul>
-        </section>
-      </div>
+    <div class="byline">
+      <span><b>Alzayat Saleh</b>, James Cook University</span>
+      <span><b>Arjun Chennu</b>, Australian Institute of Marine Science</span>
+    </div>
 
-      <!-- The Blue Water Problem -->
-      <div class="container">
-        <section>
-          <h2>The Blue Water Problem</h2>
+    <div class="actions">
+      <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank" rel="noopener">Assess an image</a>
+      <a href="methodology.html">How it works</a>
+      <a href="documentation.html">Documentation</a>
+    </div>
+  </div>
+</div>
 
-          <p>
-            When light passes through water, different wavelengths are absorbed at different rates, causing underwater
-            images to suffer from:
-          </p>
+<div class="shell compare-wrap">
+  <figure class="compare" id="compare">
+    <img src="images/examples/18_img_poor.png" alt="Reef scene with heavy blue-green colour cast and reduced contrast">
+    <img class="top" src="images/examples/18_img_good.png" alt="The same reef scene with colour and contrast recovered">
+    <div class="handle" aria-hidden="true"></div>
+    <figcaption><span>Degraded</span><span>Recovered</span></figcaption>
+  </figure>
+  <p class="compare-note">
+    One scene, two renderings. Drag to compare. Wavelength dependent absorption removes
+    the red end of the spectrum first, so warm colours go dark before anything looks
+    obviously wrong. Feature density and contrast fall with it, which is what breaks
+    downstream detection and photogrammetry.
+  </p>
+</div>
 
-          <div class="features-grid">
-            <div class="feature-card">
-              <h3>Blue-Green Color Cast</h3>
-              <p>Images appear predominantly blue or cyan due to selective light absorption</p>
-            </div>
-            <div class="feature-card">
-              <h3>Low Contrast</h3>
-              <p>Reduced visibility and detail visibility in underwater scenes</p>
-            </div>
-            <div class="feature-card">
-              <h3>Color Loss</h3>
-              <p>Warm colors (red, orange, yellow) appear dark or completely black</p>
-            </div>
-            <div class="feature-card">
-              <h3>Reduced Sharpness</h3>
-              <p>Light scattering reduces fine details and edge clarity</p>
-            </div>
-          </div>
-
-          <h3>Why It Matters</h3>
-          <p>
-            For <strong>marine scientists</strong>: Difficulty in species identification, loss of behavioral details, and
-            reduced documentation value. For <strong>computer vision tasks</strong>: Poor feature extraction, failed object
-            detection, and training data quality issues.
-          </p>
-        </section>
-      </div>
-
-      <!-- Assessment Approaches -->
-      <div class="container">
-        <section>
-          <h2>Assessment Approaches</h2>
-          <p>Choose the method that best fits your speed, accuracy, and deployment needs:</p>
-
-          <h3>1. Traditional Metrics (CPU-Based)</h3>
-          <div class="feature-card">
-            <strong>Best for:</strong> High accuracy, interpretability, research validation
-            <ul style="margin-top: 1rem">
-              <li>42 hand-crafted metrics based on image science</li>
-              <li>No training data required</li>
-              <li>Fully interpretable results</li>
-              <li><strong>Speed:</strong> 40-60 images/sec on HPC (64 cores)</li>
-              <li><strong>Accuracy:</strong> MAE 8.5 ± 2.1, Correlation 0.82</li>
-            </ul>
-          </div>
-
-          <h3>2. Deep Learning (GPU-Based)</h3>
-          <div class="feature-card">
-            <strong>Best for:</strong> Ultra-fast inference, large-scale datasets, real-time applications
-            <ul style="margin-top: 1rem">
-              <li>4 model architectures: UnderwaterQualityNet, EfficientNet, Vision Transformer, MultiMetricPredictor</li>
-              <li>GPU-accelerated batch processing</li>
-              <li><strong>Speed:</strong> 500-1000 images/sec on RTX 3090</li>
-              <li><strong>Accuracy:</strong> MAE 5.2 ± 1.6, Correlation 0.91</li>
-            </ul>
-          </div>
-
-          <h3>3. Hybrid Ensemble (Best Overall)</h3>
-          <div class="feature-card">
-            <strong>Best for:</strong> Maximum accuracy, critical applications, research papers
-            <ul style="margin-top: 1rem">
-              <li>Combines traditional metrics + deep learning predictions</li>
-              <li>Configurable weighting (default: 60% DL, 40% traditional)</li>
-              <li><strong>Speed:</strong> 8-12 images/sec</li>
-              <li><strong>Accuracy:</strong> MAE 4.8 ± 1.4, Correlation 0.93 ⭐</li>
-            </ul>
-          </div>
-        </section>
-      </div>
-
-      <!-- Features -->
-      <div class="container">
-        <section>
-          <h2>System Features</h2>
-
-          <h3>Assessment Metrics (42 Total)</h3>
-          <p>Organized into 10 categories:</p>
-          <ul>
-            <li>Color and Saturation (5 metrics)</li>
-            <li>Contrast and Brightness (6 metrics)</li>
-            <li>Sharpness and Clarity (7 metrics)</li>
-            <li>Frequency Domain Analysis (4 metrics)</li>
-            <li>Edge Detection (3 metrics)</li>
-            <li>Noise Detection (4 metrics)</li>
-            <li>Color Space Analysis (3 metrics)</li>
-            <li>Structural Similarity (2 metrics)</li>
-            <li>Histogram Analysis (2 metrics)</li>
-            <li>Custom Underwater Metrics (1 metric)</li>
-          </ul>
-
-          <h3>Output Metrics</h3>
-          <div class="features-grid">
-            <div class="feature-card">
-              <h3>Overall Quality</h3>
-              <p>0-100 score indicating overall image quality</p>
-            </div>
-            <div class="feature-card">
-              <h3>Feature Usefulness</h3>
-              <p>0-100 score for computer vision applications</p>
-            </div>
-            <div class="feature-card">
-              <h3>Marine Science Value</h3>
-              <p>0-100 score for research applications</p>
-            </div>
-            <div class="feature-card">
-              <h3>Blue Water Severity</h3>
-              <p>0-10 severity score of the blue water problem</p>
-            </div>
-          </div>
-
-          <h3>Visualization & Reporting</h3>
-          <ul>
-            <li>11-panel comprehensive quality reports</li>
-            <li>Side-by-side feature comparison</li>
-            <li>Edge detection overlays</li>
-            <li>Color space analysis (RGB, HSV, LAB)</li>
-            <li>Histogram analysis</li>
-            <li>Batch processing with CSV/JSON exports</li>
-          </ul>
-        </section>
-      </div>
-
-      <!-- Applications -->
-      <div class="container">
-        <section>
-          <h2>Applications</h2>
-
-          <div class="features-grid">
-            <div class="feature-card">
-              <h3>Marine Biology Research</h3>
-              <p>Species identification and behavioral studies with quality assurance</p>
-            </div>
-            <div class="feature-card">
-              <h3>Autonomous Vehicles (AUV)</h3>
-              <p>Real-time image quality assessment for underwater drone operations</p>
-            </div>
-            <div class="feature-card">
-              <h3>Underwater Archaeology</h3>
-              <p>Quality assessment for historical site documentation and surveys</p>
-            </div>
-            <div class="feature-card">
-              <h3>Coral Reef Monitoring</h3>
-              <p>Standardized quality metrics for reef health assessment (e.g., Great Barrier Reef REEFSCAN)</p>
-            </div>
-            <div class="feature-card">
-              <h3>Computer Vision Dataset Curation</h3>
-              <p>Automated selection of high-quality images for machine learning training</p>
-            </div>
-            <div class="feature-card">
-              <h3>Image Enhancement Evaluation</h3>
-              <p>Benchmark underwater image enhancement algorithms</p>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- Quick Features -->
-      <div class="container">
-        <section>
-          <h2>Why Choose Underwater_IQA?</h2>
-
-          <div class="features-grid">
-            <div class="feature-card">
-              <h3>✨ Specialized for Underwater</h3>
-              <p>Designed specifically for underwater image challenges, not generic IQA systems</p>
-            </div>
-            <div class="feature-card">
-              <h3>⚡ Ultra-Fast Processing</h3>
-              <p>Process 10,000+ images in minutes with GPU acceleration</p>
-            </div>
-            <div class="feature-card">
-              <h3>🔬 Scientifically Rigorous</h3>
-              <p>42 metrics backed by image science principles</p>
-            </div>
-            <div class="feature-card">
-              <h3>🎯 Three Assessment Methods</h3>
-              <p>Choose between accuracy, speed, or best-of-both hybrid approach</p>
-            </div>
-            <div class="feature-card">
-              <h3>📊 Beautiful Visualizations</h3>
-              <p>Comprehensive 11-panel reports for deep analysis</p>
-            </div>
-            <div class="feature-card">
-              <h3>🔧 Easy to Use</h3>
-              <p>Simple Python API, CLI tools, and web interface</p>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- Call to Action -->
-      <div class="container text-center mt-2">
-        <h2>Get Started Today</h2>
-        <p style="font-size: 1.1rem; margin: 1.5rem 0"
-          >Assess your underwater images with the most comprehensive quality assessment system available</p>
-        <div class="cta-buttons">
-          <a href="documentation.html" class="btn btn-primary">📖 Read Documentation</a>
-          <a href="gallery.html" class="btn btn-secondary">🖼️ View Examples</a>
-          <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" class="btn btn-primary">🚀 Try Demo</a>
-        </div>
-      </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
+<section class="band">
+  <div class="shell">
+    <div class="rail"><p class="label">The problem</p></div>
+    <div class="prose">
+      <h2>Low quality images were excluded</h2>
+      <p class="lede">
+        That sentence appears in methods sections across the literature, and it is
+        almost never reproducible.
+      </p>
       <p>
-        <strong>Underwater Image Quality Assessment (Underwater_IQA)</strong><br />
-        Version 2.1.0 | Open Source | <a href="https://github.com/alzayats/Image_Quality_Assessment" target="_blank">GitHub Repository</a>
+        The factors that make an underwater image usable are multi-dimensional and hard
+        to put into words: colour fidelity, contrast, feature density, turbidity. Two
+        observers looking at the same frame disagree, and neither can hand their
+        criteria to a third. The result is that quality screening consumes weeks of
+        expert time per expedition and still produces decisions no one else can repeat.
       </p>
-      <p style="margin-top: 1rem; font-size: 0.9rem">
-        Built with 🌊 for marine research, underwater imaging, and computer vision applications
+      <div class="pull">
+        Quality is not a property a reader should have to take on trust. It is a
+        measurement, and it can be reported like one.
+      </div>
+      <p>
+        UNIQAT computes 37 metrics per image without needing a reference version of the
+        photograph, since pristine ground truth for a survey frame does not exist. The
+        metrics can be weighted into task-specific scores, so a photogrammetry
+        workflow and a coral health assessment can apply different thresholds to the
+        same underlying measurements and each say exactly what they did.
       </p>
-    </footer>
+    </div>
+  </div>
+</section>
 
-    <script src="js/main.js"></script>
-  </body>
+<section class="band">
+  <div class="shell">
+    <div class="rail"><p class="label">What was measured</p></div>
+    <div class="prose">
+      <h2>Evaluated on 130,845 unfiltered survey images</h2>
+      <p>
+        Nine surveys from the AIMS Technology Transformation Program, spanning three
+        reef sectors of the Great Barrier Reef, four research trips and three ReefScan
+        camera configurations. No manual filtering was applied first, so the
+        distribution below is what raw survey data actually looks like.
+      </p>
+
+      <table class="findings">
+        <thead>
+          <tr><th>Result</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Throughput<small>Traditional pipeline, 64 core cluster node, 48 CPU workers</small></td>
+            <td class="num">7.9 images/s</td>
+          </tr>
+          <tr>
+            <td>Scaling with batch size<small>Wall clock against image count across nine surveys</small></td>
+            <td class="num">r&sup2; = 0.98</td>
+          </tr>
+          <tr>
+            <td>Depth and quality<small>Negative correlation recovered in every survey, regardless of sector or camera</small></td>
+            <td class="num">r = -0.16 to -0.89</td>
+          </tr>
+          <tr>
+            <td>Cross-survey stability<small>Spearman correlation of metric profiles, all 36 pairwise comparisons</small></td>
+            <td class="num">&rho; &ge; 0.97</td>
+          </tr>
+          <tr>
+            <td>Images scoring 60 or above<small>Default weighting, scale 0 to 100</small></td>
+            <td class="num">57.2%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:1.6rem">
+        The depth relationship is the useful check. Nothing in the metrics knows about
+        depth, yet quality declines monotonically with it in all nine surveys, which is
+        what underwater optics predicts. That is evidence the scores track physical
+        degradation rather than noise.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="rail"><p class="label">The metrics</p></div>
+    <div class="prose">
+      <h2>Nine diagnostic categories</h2>
+      <p>
+        Every metric is a closed-form function of the pixel array, computed
+        algorithmically with no learned parameters, so the pipeline is deterministic and
+        needs no training data. A single scalar tells you an image is bad; these tell
+        you why, which is what you need to decide whether to re-acquire, correct, or
+        discard it.
+      </p>
+      <ul class="categories">
+        <li><span class="n">9</span><span>Colour cast analysis</span></li>
+        <li><span class="n">7</span><span>Colour distribution</span></li>
+        <li><span class="n">5</span><span>Contrast measures</span></li>
+        <li><span class="n">5</span><span>Feature richness</span></li>
+        <li><span class="n">3</span><span>Sharpness and blur</span></li>
+        <li><span class="n">2</span><span>Visibility and turbidity</span></li>
+        <li><span class="n">2</span><span>Underwater indices, UCIQE and UIQM</span></li>
+        <li><span class="n">2</span><span>Information content</span></li>
+        <li><span class="n">2</span><span>Composite assessment scores</span></li>
+      </ul>
+      <p style="margin-top:1.6rem">
+        The suite runs on a laptop and scales to a cluster. Deep learning architectures
+        are included as training-ready code for users who need faster single-image
+        inference and are willing to train on their own imagery.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="rail"><p class="label">Status</p></div>
+    <div class="prose">
+      <h2>Availability</h2>
+      <p class="status"><span class="dot"></span><span>Manuscript under review at <em>Methods in Ecology and Evolution</em>.</span></p>
+      <p style="margin-top:1.2rem">
+        The toolkit is released under the MIT licence. The source repository is being
+        prepared for public release alongside publication. In the meantime the hosted
+        demo will assess an image you upload and return the full metric breakdown.
+      </p>
+      <p class="label" style="margin-top:2rem">Citation</p>
+      <div class="cite">Saleh, A. and Chennu, A. UNIQAT: An Open-Source Toolkit for
+Reproducible Image Quality Assessment in Marine Surveys.
+Manuscript under review, Methods in Ecology and Evolution.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="shell">
+    <span>James Cook University and the Australian Institute of Marine Science</span>
+    <span><a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank" rel="noopener">Hosted demo</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
 </html>

@@ -5,20 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Documentation - Underwater_IQA</title>
     <meta name="description" content="Complete documentation for Underwater_IQA system including installation, usage, and API reference." />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+    <link rel="stylesheet" href="css/style.css" /></head>
   <body>
     <!-- Navigation -->
     <header>
       <nav>
-        <a href="index.html" class="logo">🌊 Underwater_IQA</a>
+        <a href="index.html" class="logo">Underwater_IQA</a>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="documentation.html">Documentation</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="methodology.html">Methodology</a></li>
-          <li>
-            <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank">Live Demo</a>
+          <li><a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank">Live Demo</a>
           </li>
         </ul>
       </nav>
@@ -47,8 +45,9 @@
           <pre><code>pip install underwater-iqa</code></pre>
 
           <h3>From Source</h3>
-          <pre><code>git clone https://github.com/alzayats/Image_Quality_Assessment.git
-cd Image_Quality_Assessment/Underwater_IQA
+          <p style="font-size: 0.92rem">The source repository is private until the manuscript is published. The commands below will work once it is released.</p>
+          <pre><code>git clone https://github.com/open-AIMS/UNIQAT.git
+cd UNIQAT
 pip install -e .</code></pre>
 
           <h3>GPU Support (Optional)</h3>
@@ -58,7 +57,7 @@ pip install -e .</code></pre>
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118</code></pre>
 
           <h3>Verify Installation</h3>
-          <pre><code>python -c "from underwater_iqa import UnderwaterImageAssessor; print('✓ Installation successful!')"</code></pre>
+          <pre><code>python -c "from underwater_iqa import UnderwaterImageAssessor; print(' Installation successful!')"</code></pre>
         </section>
       </div>
 
@@ -116,9 +115,9 @@ for metric_category, values in results['detailed_metrics'].items():
           <ul>
             <li>Fully interpretable results</li>
             <li>No GPU required</li>
-            <li>42 hand-crafted metrics</li>
-            <li>Speed: 40-60 images/sec on HPC (64 cores)</li>
-            <li>Accuracy: MAE 8.5 ± 2.1</li>
+            <li>37 hand-crafted metrics</li>
+            <li>Throughput: 7.9 images/sec on a 64 core node with 48 workers, measured over 130,845 survey images</li>
+            <li>Single core: 0.40 images/sec, roughly 2.5 s per 2.8 megapixel image</li>
           </ul>
 
           <h3>Deep Learning</h3>
@@ -131,11 +130,11 @@ results = assessor.assess_image('image.jpg')</code></pre>
 
           <p><strong>Characteristics:</strong></p>
           <ul>
-            <li>Ultra-fast inference</li>
+            <li>Single forward pass per image</li>
             <li>Requires GPU for best performance</li>
             <li>4 model architectures available</li>
-            <li>Speed: 500-1000 images/sec on RTX 3090</li>
-            <li>Accuracy: MAE 5.2 ± 1.6</li>
+            <li>Forward pass: 934 to 2,715 images/sec on an RTX 4090, depending on architecture</li>
+            <li>Fidelity to the traditional metrics depends entirely on your training data. Models are not shipped pre-trained</li>
           </ul>
 
           <h3>Hybrid Ensemble (Recommended)</h3>
@@ -149,11 +148,11 @@ results = assessor.assess_image('image.jpg')</code></pre>
 
           <p><strong>Characteristics:</strong></p>
           <ul>
-            <li>Best overall accuracy</li>
+            <li>Retains the interpretability of the traditional metrics</li>
             <li>Combines speed and interpretability</li>
             <li>Configurable weighting</li>
-            <li>Speed: 8-12 images/sec</li>
-            <li>Accuracy: MAE 4.8 ± 1.4 ⭐</li>
+            <li>Throughput is bounded by the traditional branch, so expect the traditional figure</li>
+            <li>Useful while you are establishing how far to trust a model you trained yourself</li>
           </ul>
         </section>
       </div>
@@ -300,7 +299,7 @@ PretrainedModels.download_all()</code></pre>
         <section>
           <h2>Resources</h2>
           <ul>
-            <li><a href="https://github.com/alzayats/Image_Quality_Assessment" target="_blank">GitHub Repository</a> - Source code and issues</li>
+            <li>Source repository, released with publication</li>
             <li><a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank">Live Demo</a> - Try without installing</li>
             <li><a href="methodology.html">Methodology Guide</a> - Technical details</li>
             <li><a href="gallery.html">Example Gallery</a> - See sample assessments</li>
@@ -322,11 +321,9 @@ PretrainedModels.download_all()</code></pre>
     <footer>
       <p>
         <strong>Underwater Image Quality Assessment (Underwater_IQA)</strong><br />
-        Version 2.1.0 | Open Source | <a href="https://github.com/alzayats/Image_Quality_Assessment" target="_blank">GitHub Repository</a>
+        MIT licence. Source repository released with publication. <a href="https://huggingface.co/spaces/Alzayats/underwater-image-quality" target="_blank" rel="noopener">Hosted demo</a>
       </p>
-      <p style="margin-top: 1rem; font-size: 0.9rem">
-        For more details, visit the <a href="https://github.com/alzayats/Image_Quality_Assessment/tree/master/Underwater_IQA" target="_blank">GitHub Underwater_IQA folder</a>
-      </p>
+      <p style="margin-top: 1rem; font-size: 0.9rem">The manuscript reports the full method. Source will accompany publication.</p>
     </footer>
 
     <script src="js/main.js"></script>
